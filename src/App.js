@@ -12,10 +12,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header title={'Hello world!'} />
         <Paragraph />
         <Paragraph />
         <Paragraph />
+        <Header title={'Goodbye world!'} />
       </div>
     );
   }

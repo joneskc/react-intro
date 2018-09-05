@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const Paragraph = (props) => {
     return <p className="App-intro">{props.content}</p>

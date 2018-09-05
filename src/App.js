@@ -7,6 +7,7 @@ import './App.css';
 import Header from './components/Header'
 import Paragraph from './components/Paragraph'
 import GifList from './components/GifList'
+import GifCounter from './components/GifCounter'
 
 const API_URL='https://gif-api-practice.herokuapp.com/gifs'
 
@@ -21,7 +22,8 @@ class App extends Component {
   state = {
     content: ['this is my p1', 'this is my p2', 'this is my p3'],
     title: 'Hello World!',
-    gifs: []
+    gifs: [],
+    gifCount: Number
   }
 
   componentDidMount() {
@@ -29,7 +31,8 @@ class App extends Component {
       .then(res => res.json())
       .then(data => {
         this.setState({
-          gifs: data
+          gifs: data,
+          gifCount: data.length
         })
         console.log('state=', this.state)
       })
@@ -40,13 +43,10 @@ class App extends Component {
       return <Paragraph key={index} content={sentence} />
     })
 
-    // const gifs = this.state.gifs.map((gif, index) => {
-    //   return <GifList key={index} image={gif} />
-    // })
-
     return (
       <div className="App">
         <Header title={this.state.title} />
+        <GifCounter count={this.state.gifCount} />
         {paragraphs}
         <GifList gifs={this.state.gifs} />
         <Header title={this.state.title} />

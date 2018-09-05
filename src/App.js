@@ -22,8 +22,15 @@ class App extends Component {
   state = {
     content: ['this is my p1', 'this is my p2', 'this is my p3'],
     title: 'Hello World!',
-    gifs: [],
-    gifCount: Number
+    gifs: []
+  }
+
+  deleteGif = (event) => {
+    // console.log(event)
+    event.preventDefault()
+    // modify gifs array on state
+    // set state with new array (gif removed)
+    console.log('hey from delete')
   }
 
   componentDidMount() {
@@ -32,11 +39,12 @@ class App extends Component {
       .then(data => {
         this.setState({
           gifs: data,
-          gifCount: data.length
         })
         console.log('state=', this.state)
       })
   }
+
+
 
   render() {
     const paragraphs = this.state.content.map((sentence, index) => {
@@ -46,9 +54,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header title={this.state.title} />
-        <GifCounter count={this.state.gifCount} />
+        <GifCounter count={this.state.gifs.length} />
         {paragraphs}
-        <GifList gifs={this.state.gifs} />
+        <GifList  gifs={this.state.gifs}
+                  deleteGif={this.deleteGif} />
         <Header title={this.state.title} />
       </div>
     );

@@ -5,7 +5,9 @@ import Gif from './Gif'
 const GifList = (props) => {
     const gifComponents = props.gifs.map(gif => {
         return (
-            <Gif gifInfo={gif} key={gif.id} />
+            <Gif    key={gif.id}
+                    gifInfo={gif}
+                    deleteGif={props.deleteGif} />
         )
     })
 

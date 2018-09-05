@@ -4,7 +4,7 @@ const Gif = (props) => {
     return (
         <img    src={props.gifInfo.gifUrl}
                 alt={props.gifInfo.description}
-                onClick={props.deleteGif} />
+                onClick={(event) => props.deleteGif(event, props.gifId)} />
     )
 }
 

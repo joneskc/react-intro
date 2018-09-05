@@ -25,12 +25,22 @@ class App extends Component {
     gifs: []
   }
 
-  deleteGif = (event) => {
-    // console.log(event)
+  deleteGif = (event, gifId) => {
+    console.log(event)
+    console.log('were deleting shit')
+    console.log(gifId)
     event.preventDefault()
     // modify gifs array on state
     // set state with new array (gif removed)
-    console.log('hey from delete')
+    const currentGifs = this.state.gifs
+    // filter
+    const filteredGifs = currentGifs.filter(gif => {
+      return gif.id !== gifId
+    })
+    console.log(filteredGifs)
+    this.setState({
+      gifs: filteredGifs
+    })
   }
 
   componentDidMount() {
